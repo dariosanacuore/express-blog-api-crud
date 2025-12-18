@@ -12,19 +12,10 @@ router.get("/:id", postsController.show)
 router.post("/", postsController.store)
 
 //UPDATE
-router.put("/:id", (req, res) => {
-    const id = req.params.id;
-    res.json("Aggiorno il post numero" + id);
-})
+router.put("/:id", postsController.update)
 //MODIFY
-router.patch("/:id", (req, res) => {
-    const id = req.params.id;
-    res.json("Aggiorna parzialmente");
-})
+router.patch("/:id", postsController.modify)
 //DESTROY
-router.delete("/:id", (req, res) => {
-    const id = req.params.id;
-    res.json("Cancella post");
-})
+router.delete("/:id", postsController.destroy)
 
 export default router;
