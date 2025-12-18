@@ -32,8 +32,20 @@ function modify(req, res) {
 }
 
 function destroy(req, res) {
-    const id = req.params.id;
-    res.json("Cancella post");
+    const id = parseInt(req.params.id);
+
+    const index = posts.findIndex(p => p.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({ error: "Post non trovato" });
+    }
+
+    posts.splice(index, 1);
+    console.log("Lista aggiornata dei post:");
+    console.log(posts);
+
+    res.status(204).send();
+
 }
 
 
