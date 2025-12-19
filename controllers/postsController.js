@@ -18,7 +18,18 @@ function show(req, res) {
 }
 
 function store(req, res) {
+    const dati = req.body;
     console.log("Dati ricevuti:", req.body);
+
+    const newId = posts[posts.length - 1].id + 1;
+    const newPost = {
+        id: newId,
+        titolo: dati.titolo,
+        contenuto: dati.contenuto,
+        tags: dati.tags,
+    };
+
+    posts.push(newPost);
     res.json("Creo un nuovo post");
 }
 
