@@ -42,8 +42,36 @@ function store(req, res) {
 }
 
 function update(req, res) {
-    const id = req.params.id;
-    res.json("Aggiorno il post numero" + id);
+    const id = parseInt(req.params.id);
+
+    const post = posts.find((post) => post.id === id);
+
+    if (post === undefined) {
+        res.status(404);
+        return res.json({
+            error: "Not found",
+            message: "Post non trovato",
+        });
+    }
+    const dati = req.body;
+    console.log(dati);
+
+
+    if (dati.titolo === undefined || dati.titolo.length === 0) {
+        res.status(400);
+        return res.json({
+            error: "Errore del client",
+            message: "Devi inserire un titolo",
+        });
+    }
+
+    post.titolo = dati.titolo;
+    post.contenuto = dati.contenuto;
+    post.tags = dati.tags;
+
+
+    res.json(post);
+    //res.json("Aggiorno il post numero" + id);
 }
 
 function modify(req, res) {
