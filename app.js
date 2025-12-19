@@ -6,6 +6,8 @@ const port = 3000;
 
 app.use(express.static("public"));
 app.use("/posts", postsRouter);
+app.use(express.json());
+
 
 app.get("/", (req, res) => {
     res.send("Ciao");

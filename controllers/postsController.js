@@ -5,7 +5,7 @@ function index(req, res) {
         count: posts.length,
         results: posts
     }
-    res.json(risposta)
+    res.json(risposta);
 }
 
 function show(req, res) {
@@ -18,6 +18,8 @@ function show(req, res) {
 }
 
 function store(req, res) {
+    const dati = req.body;
+    console.log(dati);
     res.json("Creo un nuovo post");
 }
 
