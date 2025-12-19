@@ -4,9 +4,11 @@ import postsRouter from "./routers/posts.js";
 const app = express();
 const port = 3000;
 
+
 app.use(express.static("public"));
-app.use("/posts", postsRouter);
 app.use(express.json());
+app.use("/posts", postsRouter);
+
 
 
 app.get("/", (req, res) => {

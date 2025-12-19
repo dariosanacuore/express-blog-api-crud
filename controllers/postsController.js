@@ -18,8 +18,7 @@ function show(req, res) {
 }
 
 function store(req, res) {
-    const dati = req.body;
-    console.log(dati);
+    console.log("Dati ricevuti:", req.body);
     res.json("Creo un nuovo post");
 }
 
