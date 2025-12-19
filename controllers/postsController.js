@@ -21,6 +21,14 @@ function store(req, res) {
     const dati = req.body;
     console.log("Dati ricevuti:", req.body);
 
+    if (dati.titolo === undefined || dati.titolo.length <= 0) {
+        res.status(400);
+        return res.json({
+            error: "Errore del client",
+            message: "Devi inserire un titolo",
+        });
+    }
+
     const newId = posts[posts.length - 1].id + 1;
     const newPost = {
         id: newId,
